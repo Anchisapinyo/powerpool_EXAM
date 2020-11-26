@@ -1,0 +1,119 @@
+<!DOCTYPE <html>
+
+<head>
+    <meta name="viewport" content="width= device*width, initial-scale=1.0">
+    <title>POWER POOL</title>
+    <link rel="stylesheet" type="text/css" href="css/style3.css">
+    <link
+        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">POWER POOL</a>
+        <div class="menu-toggle"></div>
+        <nav>
+            <ul>
+                <li><a href="home.html" class="active">HOME</a></li>
+                <li><a href="wallet.html">WALLET</a></li>
+                <li><a href="trading.html">BIDDING</a></li>
+                <li><a href="exchanging.html">EXCHANGING</a></li>
+                <li><a href="billing.html">BILLING</a></li>
+                <li><a href="index.html">LOGOUT</a></li>
+            </ul>
+        </nav>
+        <div class="clearfix"></div>
+    </header>
+    <div class="table-box2">
+
+
+        <img id="slide-img" name="slide" width="500" height="550">
+
+        <div class="top-row1">
+            <div class="field-wrap">
+                <span class="req1">Location *</span><br>
+                <input id="location" type="text" class="validate"
+                    required>
+
+                <button type="button" class="btn-info1"
+                    id="findLatLngBtnId">Verify</button>
+            </div>
+
+            <div class="field-wrap">
+                <span class="req1">Smart Meter *</span><br>
+                <input type="text" id="meter" class="validate"
+                    required>
+                <button type="button" onclick="" class="btn-info1"
+                    id="btn-home">Verify</button>
+            </div>
+
+            <div class="field-wrap">
+                <span class="req1">Agent Device *</span><br>
+                <input type="text" id="agent" class="validate"
+                    required>
+                <button type="button" onclick="" class="btn-info1"
+                    id="btn-home">Verify</button>
+            </div>
+
+        </div>
+
+            <div id="googleMap" style="width:100%;height:500px"></div>
+    </div>
+
+
+                    <script src="https://code.jquery.com/jquery-3.4.1.js"
+                        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+                    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+                    <script
+                        src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-map/3.0-rc1/jquery.ui.map.js"></script>
+                    <script src="https://maps.googleapis.com/maps/api/js"></script>
+                    <script type="text/javascript" src="js/map.js"></script>
+                    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.menu-toggle').click(function() {
+                $('.menu-toggle').toggleClass('active')
+                $('nav').toggleClass('active')
+            })
+        })
+
+        var i=0;
+        var images = [];
+        var time = 3000;
+
+        images[0] = 'img/smart meter.png';
+        images[1] = 'img/meter.png';
+        
+       
+
+        function changeImg(){
+            document.slide.src = images[i];
+
+            if(i < images.length -1){
+                i++;
+            }else{
+                i =0;
+            }
+            setTimeout("changeImg()", time);
+        }
+
+        window.onload=changeImg;
+
+        let map;
+
+        function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+            center: { lat: -34.397, lng: 150.644 },
+            zoom: 8,
+        });
+        }
+
+
+        
+
+
+
+    </script>
+                </body>
+
+            </html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>POWER POOL</title>
+        <link rel="stylesheet" type="text/css" href="css/style3.css">
+        <link
+            href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+            rel="stylesheet">
+
+    </head>
+
+    <body>
+        <header>
+            <a href="#" class="logo">POWER POOL</a>
+            <div class="menu-toggle"></div>
+            <nav>
+                <ul>
+                    <li><a href="home.html">HOME</a></li>
+                    <li><a href="wallet.html">WALLET</a></li>
+                    <li><a href="trading.html">BIDDING</a></li>
+                    <li><a href="Exchanging.html">EXCHANGING</a></li>
+                    <li><a href="billing.html" class="active">BILLING</a></li>
+                    <li><a href="index.html">LOGOUT</a></li>
+
+                </ul>
+            </nav>
+            <div class="clearfix"></div>
+        </header>
+
+        <div id="loader">
+            <p>Loading...</p>
+        </div>
+        <div id="content" style="display: none;">
+            <div class="grid-container">
+                <div><span class="sp1">Clearing Price <br>(Baht/kWh)</span><br><span
+                        class="sp2" id="clPrice"></span></div>
+                <div><span class="sp1">Power Buy <br> (kWh)</span><br><span
+                        class="sp2" id="qBuy"></span></div>
+                <div><span class="sp1">Power Sell <br> (kWh)</span><br><span
+                        class="sp2" id="qSell"></span></div>
+                <div><span class="sp1">Carbon Reduction <br> (kgCO2)</span><br><span
+                        class="sp2" id="carbon"></span></div>
+            </div>
+            <div class="search-box-box">
+                <div class="search-box">
+                    <input id="address" class="search" type="text"
+                        placeholder="Enter Your Account" required>
+                    <button type="submit" onclick="App.viewRecord(); return
+                        false;" class="btn btn-info" id="btn-record">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="search-box-box">
+                <iframe id="frame1" width="1120.044046147204" height="637"
+                    seamless frameborder="0" scrolling="no"
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMIFp_x5woYO932KCEWXRco8MxJqB006hdICmwSzjfqW562pKiGXTG2sHCmtZksll9lHkVDfm18mID/pubchart?oid=1049482138&format=interactive">
+                </iframe>
+            </div>
+
+            <div id="myModal4" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="closebill">&times;</span>
+                        <span class="sp3">View Your Bill</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="status">Status</label>
+                                <input type="text" id="statusbill" name="status"
+                                    disabled><br>
+                                <label for="sender">Sender (Send Ether by
+                                    Metamask)</label>
+                                <input type="text" id="sender" name="sender"
+                                    disabled><br>
+                                <label for="reciever">Reciever (Wait for Your
+                                    Ether)</label>
+                                <input type="text" id="reciever" name="reciever"
+                                    disabled><br>
+                                <span>Amount (Wei) (Baht : </span><span
+                                    id="amountbillBaht"></span><span>) => (Ether
+                                    : </span><span id="amountbillEther"></span><span>)</span>
+                                <input type="text" id="amountbillWei"
+                                    name="amount" disabled><br>
+                                <label for="carbonbill">Carbon Reduction (kgCO2)</label>
+                                <input type="text" id="carbonbill"
+                                    name="carbonbill" disabled><br>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" onclick="App.payBill(); return
+                            false;" class="btn btn-info" id="btn-pay">Pay Now</button>
+                    </div>
+                </div>
+
+            </div>
+            <div id="myModal3" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <span class="sp3">View Records</span>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="address">Your Address</label>
+                                <input type="text" id="User" name="address"
+                                    disabled><br>
+                                <label for="count">Record Count</label>
+                                <input type="text" id="count" name="count"
+                                    disabled><br>
+                                <label for="buy">Total Buy (Baht)</label>
+                                <input type="text" id="buy" name="buy" disabled><br>
+                                <label for="sell">Total Sell (Baht)</label>
+                                <input type="text" id="sell" name="sell"
+                                    disabled><br>
+                                <label for="Carbon">Carbon Reduction (kgCO2)</label>
+                                <input type="text" id="Carbon" name="Carbon"
+                                    disabled><br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" onclick="" class="btn btn-info"
+                            id="btn-bill">View Bill &#10095;</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+        <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
+        <script src="js/app.js"></script>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            $('.menu-toggle').click(function() {
+                $('.menu-toggle').toggleClass('active')
+                $('nav').toggleClass('active')
+            })
+        })
+    </script>
+    </body>
+
+</html>

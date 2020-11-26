@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>POWER POOL</title>
+  <link rel="stylesheet" type="text/css" href="css/style3.css">
+  <link
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <a href="#" class="logo">POWER POOL</a>
+    <div class="menu-toggle"></div>
+    <nav>
+      <ul>
+        <li><a href="home.html">HOME</a></li>
+        <li><a href="wallet.html" class="active">WALLET</a></li>
+        <li><a href="trading.html">BIDDING</a></li>
+        <li><a href="exchanging.html">EXCHANGING</a></li>
+        <li><a href="billing.html">BILLING</a></li>
+        <li><a href="index.html">LOGOUT</a></li>
+      </ul>
+    </nav>
+    <div class="clearfix"></div>
+  </header>
+
+  <div class="table-box">
+
+    <img src="img/Untitled.png" alt="metamask">
+    <a id="chrome-ex"
+      href="https://chrome.google.com/webstore/detail/metamask/nkbihfbeogaeaoehlefnkodbefgpgknn">GeT
+      Chrome Extension >></a><br><br>
+
+    <span id="span4">POWER POOL WALLET</span><br>
+
+    <div class="search-box-box">
+      <div class="search-box">
+        <input type="text" id="meta-email" class="search"
+          placeholder="Enter Your Email" autocomplete="off" required><p>&emsp;</p>
+        <input type="text" id="meta-add" class="search"
+          placeholder="Enter Your Address from MetaMask"
+          autocomplete="off" required>
+        <button type="button" onclick="addAddress()" class="btn
+          btn-info"
+          id="btn-metamask">>></button>
+      </div>
+    </div>
+    
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.menu-toggle').click(function() {
+                $('.menu-toggle').toggleClass('active')
+                $('nav').toggleClass('active')
+            })
+        })
+
+        var script_url = "https://script.google.com/macros/s/AKfycbyV8F-M6AK0cU_po3NvbHAEbZg8UokJeWcSUxJh/exec";
+
+        function addAddress() {
+
+            var memail = document.getElementById('meta-email').value;
+            var madd = document.getElementById('meta-add').value;
+
+            if(memail.indexOf('@') <= 0){
+                alert("Invalid Email");
+				      return false;
+          } else{
+              var url = script_url + "?callback=ctrlq&memail=" + memail + "&madd=" + madd + "&action=addAddress"
+
+              console.log(memail, madd);
+              
+
+              var request = jQuery.ajax({
+                crossDomain: true,
+                url: url,
+                method: "GET",
+                dataType: "jsonp"
+              })
+            }
+
+        }
+
+        function ctrlq(e) {
+            
+            alert(e.result);
+    }
+    </script>
+  </body>
+
+</html>

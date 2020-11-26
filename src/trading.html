@@ -1,0 +1,204 @@
+<!DOCTYPE <html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>POWER POOL</title>
+    <link rel="stylesheet" type="text/css" href="css/style3.css">
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet">
+
+  </head>
+
+  <body>
+    <header>
+      <a href="#" class="logo">POWER POOL</a>
+      <div class="menu-toggle"></div>
+      <nav>
+        <ul>
+          <li><a href="home.html">HOME</a></li>
+          <li><a href="wallet.html">WALLET</a></li>
+          <li><a href="trading.html" class="active">BIDDING</a></li>
+          <li><a href="exchanging.html">EXCHANGING</a></li>
+          <li><a href="billing.html">BILLING</a></li>
+          <li><a href="index.html">LOGOUT</a></li>
+        </ul>
+      </nav>
+      <div class="clearfix"></div>
+    </header>
+    <div class="table-box">
+      <h1 id="trading-h1">POWER POOL ENERGY MARKET</h1>
+      <div class="grid-container2">
+        <div class="stopwatch"> 00:00:00 </div>
+      </div>
+      <button id="btn-open" onclick="marketOpen()" class="btn default">Market
+        Open</button>
+      <button id="btn-close" onclick="marketClose()" class="btn default">Market
+        Close</button><br>
+      <button id="btn-ckClear" onclick="showClear()" class="btn default">Check
+        Clearing Orders</button>
+      <div class="grid-container">
+        <div><span onclick="readClear()" class="sp1">Recent Clearing
+            Price <br> (Baht/kWh)</span><br><span class="sp2"
+            id="RclPrice"></span></div>
+        <div><span onclick="showOrder()" class="sp1">Recent Clearing
+            Quantity<br>(kWh)</span><br><span class="sp2"
+            id="RclQuant"></span></div>
+        <div><span onclick="showMatch()" class="sp1">Previous Clearing
+            Price <br> (Baht/kWh)</span><br><span class="sp2"
+            id="PclPrice"></span></div>
+        <div><span class="sp1">Prvious Clearing Quantity<br>(kWh)</span><br><span
+            class="sp2" id="PclQuant"></span></div>
+      </div>
+      <div id="myModal5" class="modal">
+        <div class="modal-content5">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <span class="sp3">View Clearing Orders</span>
+          </div>
+          <div class="modal-body">
+            <div id="showData2"></div>
+          </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+
+
+      <div id="myModal6" class="modal">
+        <div class="modal-content6">
+          <div class="modal-header">
+            <span class="close6">&times;</span>
+            <span class="sp3">Add Your Orders</span>
+          </div>
+          <div class="modal-body">
+            <div class="form">
+              <label for="address">Your Account</label>
+              <input id="addressOr" type="text" class="validate"
+                required>
+              <label for="typeOr">Choose Your Order</label>
+              <select id="typeOr" required>
+                <option>Bid</option>
+                <option>Offer</option>
+              </select>
+              <label for="priceOr">Price (Baht/kWh)</label>
+              <input id="priceOr" type="text" class="validate"
+                required>
+              <label for="quantOr">Quantity (kWh)</label>
+              <input id="quantOr" type="text" class="validate"
+                required>
+              <label for="passOr">Password</label>
+              <input id="passOr" type="password" class="validate"
+                required pattern="^\d{6}$">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-info"
+              onclick="addOrder()" id="btn-submitOrder">Submit
+              Order</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="slideshow-container">
+        <div class="mySlides fade">
+          <iframe id="frame3" width="997" height="588" seamless
+            frameborder="0" scrolling="no"
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQMIFp_x5woYO932KCEWXRco8MxJqB006hdICmwSzjfqW562pKiGXTG2sHCmtZksll9lHkVDfm18mID/pubchart?oid=1176444914&amp;format=interactive">
+          </iframe>
+        </div>
+        <div class="mySlides fade">
+          <div id="showData4"></div>
+        </div>
+
+        <br>
+
+        <div style="text-align:center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+      </div>
+      <button type="button" class="btn btn-info" id="btn-addForm">Add New
+        Order</button>
+
+
+      <div id="showData"></div>
+
+    </div>
+
+
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
+    <script src="js/app3.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.menu-toggle').click(function() {
+                $('.menu-toggle').toggleClass('active')
+                $('nav').toggleClass('active')
+            })
+        })
+
+        var modal6 = document.getElementById("myModal6");
+        var btn6 = document.getElementById("btn-addForm");
+        var span6 = document.getElementsByClassName("close6")[0];
+
+        btn6.onclick = function() {
+            modal6.style.display = "block";
+        }
+
+        span6.onclick = function() {
+            modal6.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal6) {
+                modal6.style.display = "none";
+            }  
+        }
+        $('#document').ready(function(){
+    $('#btn-addForm').on('click', function(){
+        $('.validate').val('');
+    });
+});
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+    </script>
+  </body>
+
+</html>

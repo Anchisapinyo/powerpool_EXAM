@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>POWER POOL</title>
+    <link rel="stylesheet" type="text/css" href="css/style3.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">POWER POOL</a>
+        <div class="menu-toggle"></div>
+        <nav>
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="wallet.html">WALLET</a></li>
+                <li><a href="trading.html">BIDDING</a></li>
+                <li><a href="exchanging.html" class="active">EXCHANGING</a></li>
+                <li><a href="billing.html">BILLING</a></li>
+                <li><a href="index.html">LOGOUT</a></li>
+
+            </ul>
+        </nav>
+        <div class="clearfix"></div>
+    </header>
+    <div id="loader">
+        <p class="text-center">Loading...</p>
+    </div>
+    <div id="content" style="display: none;">
+        <div class="table-box">
+            <button id="button-read" onclick="read_value()" class="btn default">Show Clearing Data</button><span id="account"></span>
+
+            <div id="showData5"></div>
+        </div>
+
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <span class="sp3">Add Actual Quantity</span>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group">
+
+                            <label for="id">Order Id</label>
+                            <input type="text" id="id" name="id" disabled><br>
+                            <label for="Address">Address</label>
+                            <input type="text" id="Address" name="Address" disabled><br>
+                            <label for="Clearing_Price">Clearing Price (Baht/kWh)</label>
+                            <input type="text" id="Clearing_Price" name="Clearing_Price" disabled><br>
+                            <label for="Clearing_Quantity">Clearing Quantity (kWh)</label>
+                            <input type="text" id="Clearing_Quantity" name="Clearing_Quantity" disabled><br>
+                            <label for="Status">Order Status</label>
+                            <input type="text" id="Status" name="Status" disabled>
+                            <label for="Actual_Quantity">Actual Quantity (kWh)</label>
+                            <input type="text" id="Actual_Quantity" placeholder="Please Enter Your Actual Quantity" required>
+                            <label for="PV_Quantity">PV Quantity (kWh)</label>
+                            <input type="text" id="PV_Quantity" placeholder="Please Enter Your Actual Quantity" required>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" id="btn-update">Update Data</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="myModal2" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close2">&times;</span>
+                    <span class="sp3">Confirm Your Order</span>
+                </div>
+                <form>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="id">Order Id</label>
+                                <input type="text" id="id2" name="id" disabled><br>
+                                <label for="Address">Address</label>
+                                <input type="text" id="Address2" name="Address" disabled><br>
+                                <label for="Clearing_Price">Clearing Price (Baht/kWh)</label>
+                                <input type="text" id="Clearing_Price2" name="Clearing_Price" disabled><br>
+                                <label for="Clearing_Quantity">Clearing Quantity (kWh)</label>
+                                <input type="text" id="Clearing_Quantity2" name="Clearing_Quantity" disabled><br>
+                                <label for="Status">Order Status</label>
+                                <input type="text" id="Status2" name="Status" disabled>
+                                <label for="Status">Actual Quantity (kWh)</label>
+                                <input type="text" id="Actual_Quantity2" name="Actual_Quantity2" disabled>
+                                <label for="Status">PV Quantity (kWh)</label>
+                                <input type="text" id="PV_Quantity2" name="Actual_Quantity2" disabled>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a type="submit" onclick="App.submitOrder(); return false;" class="btn btn-info" id="btn-toblockchain">Submit Data</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <br>
+
+    </div>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
+    <script src="js/app2.js"></script>
+    <script src="js/exchange.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.menu-toggle').click(function() {
+                $('.menu-toggle').toggleClass('active')
+                $('nav').toggleClass('active')
+            })
+        })
+
+
+    </script>
+</body>
+
+</html>
