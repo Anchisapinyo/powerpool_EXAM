@@ -1,4 +1,4 @@
-POWERPOOL_local-Network -DAPP
+POWERPOOL_EXAM
 
 Private blockchain Ethereum web application (Local network: Ganache)
 
@@ -17,11 +17,11 @@ Metamask: https://metamask.io/
 
 Step 1. Clone the project
 
-git clone https://github.com/Anchisapinyo/POWERPOOL_local-Network
+git clone https://github.com/Anchisapinyo/POWERPOOL_EXAM
 
 Step 2. Install dependencies
 
-$ cd POWERPOOL_local-Network
+$ cd POWERPOOL_EXAM
 
 $ npm install
 
